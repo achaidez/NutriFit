@@ -5,12 +5,12 @@ import axios from 'axios';
 const MainNutrition = () => {
   return (
     <div>
-      Main Nutrition JSX
+      <h1>Main Nutrition JSX</h1>
       <div>
-        Nutrition Input
+        <h4>Nutrition Input</h4>
       </div>
       <div>
-        Food List
+        <h4>Food List</h4>
       </div>
     </div>
   )

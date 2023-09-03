@@ -18,7 +18,12 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: [".*", ".js", ".jsx"] },
+  resolve: {
+    extensions: [".*", ".js", ".jsx"],
+    alias: {
+      "react-native$": "react-native-web",
+    },
+  },
   output: {
     path: path.resolve(__dirname, "client/dist/"),
     publicPath: "/client/dist/",
