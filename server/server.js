@@ -7,7 +7,9 @@ const axios = require('axios');
 const port = process.env.PORT || 3000;
 const db = require('../database/db.js');
 
-const authRouter = require("./routes/auth.js");
+// importing the routes
+const indexRouter = require("./routes/index");
+const authRouter = require("./routes/auth");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,8 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use("/auth", authRouter);
+//adding the routes
+app.use("/", indexRouter);
+app.use('/auth', authRouter);
 
 app.listen(port, function () {
   console.log(`🚀 Listening on port ${port}`);
+  //console.log(indexRouter, authRouter)
 });

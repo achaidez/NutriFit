@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { hash } = require("bcryptjs");
+const { hash, compare } = require("bcryptjs");
 const { verify } = require("jsonwebtoken");
 const { protected } = require("../utils/protected");
 const { createPasswordResetToken } = require("../utils/tokens");
@@ -23,7 +23,7 @@ const User = require("../../database/schema.js");
 // Sign Up request
 router.post("/signup", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
     // 1. check if user already exists
     const user = await User.findOne({ email: email });
 
@@ -59,7 +59,7 @@ router.post("/signup", async (req, res) => {
 // Sign In request
 router.post("/signin", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
     // 1. check if user exists
     const user = await User.findOne({ email: email });
 
@@ -71,7 +71,6 @@ router.post("/signin", async (req, res) => {
       });
     // 2. if user exists, check if password is correct
     const isMatch = await compare(password, user.password);
-
     // if password is incorrect, return error
     if (!isMatch)
       return res.status(500).json({
