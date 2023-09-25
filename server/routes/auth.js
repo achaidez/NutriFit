@@ -59,7 +59,7 @@ router.post("/signup", async (req, res) => {
 // Sign In request
 router.post("/signin", async (req, res) => {
   try {
-    const { email, password } = req.query;
+    const { email, password } = req.body.query;
     // 1. check if user exists
     const user = await User.findOne({ email: email });
 

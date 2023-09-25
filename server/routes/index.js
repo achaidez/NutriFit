@@ -4,10 +4,10 @@ const express = require("express");
 const router = express.Router();
 
 // configuring routes
-router.get("/", function (_req, res) {
+router.get("/", (req, res) => {
   // console.log("request", req)
   // console.log("response", res)
   // sending the response
-  res.send("Hello Express!! 👋");
+  res.send("Hello!! 👋");
 });
 module.exports = router;

@@ -10,6 +10,7 @@ const db = require('../database/db.js');
 // importing the routes
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
+const cookiesRouter = require("./routes/cookies");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +21,8 @@ app.use(cookieParser());
 
 //adding the routes
 app.use("/", indexRouter);
-app.use('/auth', authRouter);
+app.use("/auth", authRouter);
+app.use("/cookies", cookiesRouter);
 
 app.listen(port, function () {
   console.log(`🚀 Listening on port ${port}`);
