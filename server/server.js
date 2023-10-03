@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const axios = require('axios');
 const port = process.env.PORT || 3000;
 const db = require('../database/db.js');
+const pgdb = require('../database/pgdb.js')
 
 // importing the routes
 const indexRouter = require("./routes/index");
@@ -28,3 +29,5 @@ app.listen(port, function () {
   console.log(`🚀 Listening on port ${port}`);
   //console.log(indexRouter, authRouter)
 });
+
+pgdb.getClient();

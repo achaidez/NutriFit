@@ -9,6 +9,8 @@ import Login from "./login/login.jsx";
 import Dashboard from "./dashboard.jsx";
 import Home from "./home.jsx";
 
+import CoverImage from "../assets/4CA841EF-DC3F-404D-9127-7AFDC12F6C84.jpg";
+
 const App = () => {
   const navigate = useNavigate();
 
@@ -41,26 +43,43 @@ const App = () => {
     //write function to redirec t to home page
   };
 
+  const logoutClick = () => {
+    axios.post('/auth/logout', (req, res) => {
+      console.log('logout post req')
+    })
+    .then(data => {
+      console.log(data);
+      navigate('/login')
+    })
+    .catch(err => {
+      console.log('logout err', err);
+    })
+  }
+
   //console.log(refresh)
 
   if (refresh !== undefined) {
     return (
       <div>
         <h1>LOGO</h1>
+        <div>
+          <img url={CoverImage} alt='Cover Image'/>
+        </div>
+        <button onClick={logoutClick}>Log Out</button>
         <Routes>
           <Route path="/" element={<Dashboard />}>
             <Route index element={<Home />} />
             <Route path="exercise" element={<MainExercise />} />
             <Route path="nutrition" element={<MainNutrition />} />
           </Route>
+          <Route path="login" element={<Login />} />
         </Routes>
       </div>
     )
   } else {
     return (
       <div>
-        <h1>Logo</h1>
-        Please Login
+        <h1>LOGO</h1>
         <Login />
       </div>
     )

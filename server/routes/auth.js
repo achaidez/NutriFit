@@ -18,7 +18,7 @@ const {
   passwordResetConfirmationTemplate,
 } = require("../utils/email");
 // importing the user model
-const User = require("../../database/schema.js");
+const User = require("../../database/mdbschema.js");
 
 // Sign Up request
 router.post("/signup", async (req, res) => {
@@ -99,7 +99,7 @@ router.post("/signin", async (req, res) => {
 });
 
 // Sign Out request
-router.post("/logout", (_req, res) => {
+router.post("/logout", (req, res) => {
   // clear cookies
   res.clearCookie("refreshtoken");
   return res.json({

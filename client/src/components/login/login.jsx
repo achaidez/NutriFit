@@ -17,7 +17,7 @@ const Login = () => {
     })
     .then(() => {
       console.log('login success');
-      navigate();
+      navigate("/");
     })
     .catch(err => {
       console.log('handle login submit err', err);
@@ -26,8 +26,8 @@ const Login = () => {
 
   return (
     <div>
-      Login
       <div>
+      <h3>Please Login</h3>
         <form>
           <input placeholder='Email'></input>
           <input placeholder='Password'></input>

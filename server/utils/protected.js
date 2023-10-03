@@ -1,6 +1,6 @@
 const { verify } = require("jsonwebtoken");
 
-const User = require("../../database/schema");
+const User = require("../../database/mdbschema");
 
 const protected = async (req, res, next) => {
   // get the token from the header
