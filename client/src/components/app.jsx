@@ -9,8 +9,6 @@ import Login from "./login/login.jsx";
 import Dashboard from "./dashboard.jsx";
 import Home from "./home.jsx";
 
-import CoverImage from "../assets/4CA841EF-DC3F-404D-9127-7AFDC12F6C84.jpg";
-
 const App = () => {
   const navigate = useNavigate();
 
@@ -56,15 +54,10 @@ const App = () => {
     })
   }
 
-  //console.log(refresh)
-
   if (refresh !== undefined) {
     return (
       <div>
         <h1>LOGO</h1>
-        <div>
-          <img url={CoverImage} alt='Cover Image'/>
-        </div>
         <button onClick={logoutClick}>Log Out</button>
         <Routes>
           <Route path="/" element={<Dashboard />}>

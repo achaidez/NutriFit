@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser');
 const axios = require('axios');
 const port = process.env.PORT || 3000;
 const db = require('../database/db.js');
-const pgdb = require('../database/pgdb.js')
+const client = require('../database/pgdb.js');
+const { createTables } = require('../database/pgschema.js');
 
 // importing the routes
 const indexRouter = require("./routes/index");
@@ -30,4 +31,15 @@ app.listen(port, function () {
   //console.log(indexRouter, authRouter)
 });
 
-pgdb.getClient();
+createTables()
+
+//exercise routes----------------------------------------------------------->
+
+//GET full log
+app.get("/exerciseLog", client.getExerciseLog);
+
+//GET exercise lists
+app.get("/exercises/:part", (req, res) => {
+  const part = req.params.part;
+  client.getExercises(part, res);
+});
